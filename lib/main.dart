@@ -176,17 +176,33 @@ Get.back();
 }
 
 
-class firstScreen extends StatelessWidget{
+class firstScreen extends StatelessWidget {
+final MyTabController firstScreenController = Get.put(MyTabController());
 
   @override
   Widget build(BuildContext context){
-return Scaffold(appBar:  AppBar(
+return Scaffold(
+  appBar:  AppBar(
+    bottom: TabBar(
+      controller: firstScreenController.tabController,
+      tabs: [ 
+      Tab(child: Text("second"),),
+      Tab(child: Text("third"),)
+    ],),
   automaticallyImplyLeading: false,
   actions: [IconButton(onPressed: (){
     Get.back();
   }, icon: Icon(Icons.close))],
   title:  Text("first screen",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
-backgroundColor: Colors.green,);
+backgroundColor: Colors.green,
+body: TabBarView(
+  controller: firstScreenController.tabController,
+  children: [ 
+  SecondScreen(),
+  thirdscreen()
+
+
+],),);
   }
 
 }
@@ -256,4 +272,19 @@ updatedropdown(value){
 }
 
 
+}
+class MyTabController extends GetxController with GetSingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void onInit() {
+    super.onInit();
+    tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void onClose() {
+    tabController.dispose();
+    super.onClose();
+  }
 }
