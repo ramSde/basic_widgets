@@ -29,10 +29,11 @@ final controller = Get.put<widgetcontroller>(widgetcontroller());
   @override
   Widget build(BuildContext context) {
     
-    return Scaffold(
+    return Obx(()=>Scaffold(
+      backgroundColor: controller.radiogroup.value==0 ? Colors.red : Colors.blue,
       appBar: AppBar(title: Text("list of widgets"),),
-      body: Obx(
-        ()=> SingleChildScrollView(
+      body: 
+         SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,7 +148,7 @@ class widgetcontroller extends GetxController {
   RxBool checkboxgroup3 = false.obs;
 RxBool switchgroup = false.obs;
 RxDouble slidergroup = 0.0.obs;
-var dropdown = "ram".obs;
+var dropdown = "vipu".obs;
 
 updateradio(int? value){
   radiogroup.value = value ?? 0;
