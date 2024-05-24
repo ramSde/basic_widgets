@@ -44,17 +44,23 @@ Get.back();
           ),
           ListTile( 
             title: Text("first"),
-            onTap: (){print("first tappped ");},
+            onTap: (){
+              Get.to(firstScreen());
+              print("first tappped ");},
           ),
           Divider(height: 4,),
           ListTile( 
             title: Text("second"),
-            onTap: (){print("second tappped ");},
+            onTap: (){
+              Get.to(SecondScreen());
+              print("second tappped ");},
           ),
           Divider(height: 4,),
           ListTile( 
             title: Text("third"),
-            onTap: (){print("third tappped ");},
+            onTap: (){
+              Get.to(thirdscreen());
+              print("third tappped ");},
           )
         ],),
 
@@ -167,6 +173,50 @@ Get.back();
       ),
     );
   }
+}
+
+
+class firstScreen extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context){
+return Scaffold(appBar:  AppBar(
+  automaticallyImplyLeading: false,
+  actions: [IconButton(onPressed: (){
+    Get.back();
+  }, icon: Icon(Icons.close))],
+  title:  Text("first screen",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
+backgroundColor: Colors.green,);
+  }
+
+}
+class SecondScreen extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context){
+return Scaffold(appBar:  AppBar(
+  actions: [IconButton(onPressed: (){
+    Get.back();
+  }, icon: Icon(Icons.close))],
+  automaticallyImplyLeading: false,
+  title:  Text("SecondScreen screen",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
+backgroundColor: Colors.green,);
+  }
+
+}
+class thirdscreen extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context){
+return Scaffold(appBar:  AppBar(
+  actions: [IconButton(onPressed: (){
+    Get.back();
+  }, icon: Icon(Icons.close))],
+  automaticallyImplyLeading: false,
+  title:  Text("thirdscreen screen",style: TextStyle(color: Colors.white),),backgroundColor: Colors.black,),
+backgroundColor: Colors.green,);
+  }
+
 }
 
 
