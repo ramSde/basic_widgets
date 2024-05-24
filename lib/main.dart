@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
+import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 
 main() {
@@ -30,8 +31,39 @@ final controller = Get.put<widgetcontroller>(widgetcontroller());
   Widget build(BuildContext context) {
     
     return Obx(()=>Scaffold(
+      drawer: Drawer( 
+        child: Column(children: [ 
+          SizedBox(height: 100,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [ 
+              IconButton(onPressed: (){
+Get.back();
+              }, icon: Icon(Icons.close))
+            ],
+          ),
+          ListTile( 
+            title: Text("first"),
+            onTap: (){print("first tappped ");},
+          ),
+          Divider(height: 4,),
+          ListTile( 
+            title: Text("second"),
+            onTap: (){print("second tappped ");},
+          ),
+          Divider(height: 4,),
+          ListTile( 
+            title: Text("third"),
+            onTap: (){print("third tappped ");},
+          )
+        ],),
+
+      ),
       backgroundColor: controller.radiogroup.value==0 ? Colors.red : Colors.blue,
-      appBar: AppBar(title: Text("list of widgets"),),
+      appBar: AppBar(title: Text("list of widgets"),
+      actions: [],
+      
+      ),
       body: 
          SingleChildScrollView(
           child: Column(
